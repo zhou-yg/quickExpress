@@ -12,5 +12,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "pixi.js": "pixi#~3.0.8"
+  }
 }

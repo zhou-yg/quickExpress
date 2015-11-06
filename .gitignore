@@ -1,12 +1,2 @@
-routes/api/*.coffee
-
-models/*.coffee
-
-services/*.coffee
-
-public/js/*.coffee
-public/js/*/*.coffee
-
-*.coffee
 
 .idea/

@@ -27,8 +27,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
-
 app.use('/', routes);
 
 // catch 404 and forward to error handler
