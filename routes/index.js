@@ -15,26 +15,32 @@ var controllerDir = path.resolve(__dirname, controllerDirName);
 
 var jsFileRegExp = /\.js$/;
 
-var loadAllRoutes = function (dir) {
-  return fs.readdirSync(dir).filter(function (controllerName) {
-    return jsFileRegExp.test(controllerName);
-  }).forEach(function (controllerName) {
-    var controller, e, fn, route, routerName, _results;
-    controllerName = controllerName.replace(/\.js$/, '');
-    try {
-      controller = require(path.resolve(__dirname, dir, controllerName));
-      _results = [];
-      for (routerName in controller) {
-        fn = controller[routerName];
-        route = "/" + controllerName + "/" + routerName;
-        _results.push(router.get(route, fn));
+//加载指定的路由
+var loadAllRoutes = function (method) {
+
+  return function(){
+
+    fs.readdirSync(dir).filter(function (controllerName) {
+      return jsFileRegExp.test(controllerName);
+    }).forEach(function (controllerName) {
+      var controllerNameWithoutExtension = controllerName.replace(/\.js$/, '');
+
+      try {
+        var controller = require(path.resolve(__dirname, dir, controllerNameWithoutExtension));
+        Object.keys(controller).forEach(function(routerName){
+          var route = "/" + controllerNameWithoutExtension + "/" + routerName;
+          var fn = controller[routerName];
+
+          [].concat(fn).forEach(function(f){
+            router.post(route, f);
+            router.get(route, f);
+          });
+        });
+      } catch (_error) {
+        console.error(_error);
       }
-      return _results;
-    } catch (_error) {
-      e = _error;
-      return console.log(e);
-    }
-  });
+    });
+  }
 };
 
 [controllerDir].forEach(loadAllRoutes);
