@@ -89,3 +89,6 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+node_modules/kerberos/build/kerberos.target.mk
+
+node_modules/kerberos/build/config.gypi
