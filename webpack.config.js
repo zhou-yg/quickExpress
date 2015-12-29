@@ -43,11 +43,18 @@ module.exports = {
   module: {
     loaders: [
       {
+        test:/\.jsx|\.js$/,
+        exclude: /node_modules|bower_components/,
+        loader:'babel'
+      },
+      {
         test: /\.ejs$/,
+        exclude: /node_modules|bower_components/,
         loader: 'ejs-loader?variable=data'
       },
       {
         test:/\.scss$/,
+        exclude: /node_modules|bower_components/,
         loaders:['style','css','sass-loader']
       }
     ]
