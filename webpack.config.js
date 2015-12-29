@@ -32,6 +32,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js','.jsx','.scss'],
   },
+  externals:{
+
+  },
   entry: {
     index: path.resolve(__dirname, './public/js/main.js'),
   },
