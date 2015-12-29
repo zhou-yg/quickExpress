@@ -10,7 +10,7 @@ var dest = path.resolve(__dirname,'../public/compress/');
 module.exports = function(gulp){
 
   gulp.task('tinyPng',function(){
-    gulp.src(pngDir)
+    return gulp.src(pngDir)
       .pipe(tinyPng(apiKey))
       .pipe(gulp.dest(dest));
   });

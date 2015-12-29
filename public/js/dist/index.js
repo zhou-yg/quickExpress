@@ -48,14 +48,18 @@
 	 * Created by zyg on 15/11/6.
 	 */
 	var hello = __webpack_require__(1);
+	
+	console.log(hello);
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by zyg on 15/11/6.
 	 */
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../styles/normalize\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
 	module.exports = 'hello';
 
 /***/ }
