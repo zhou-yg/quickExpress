@@ -4,15 +4,16 @@
 var path = require('path');
 var qnUpload = require('gulp-qiniu');
 
-var src = path.resolve(__dirname,'../public/assets/**/**');
+var src = path.resolve(__dirname,'../public/images/howToShare.png');
 
 var optionDir = path.resolve(__dirname,'../uploadDir/');
+
 module.exports = function(gulp){
   gulp.task('qiniu',function(){
     gulp.src(src).pipe(qnUpload({
-      accessKey: "Your_Access_Key",
-      secretKey: "Your_Secret_key",
-      bucket: "Your_Bucket_Name",
+      accessKey: "OoRT_gLqGqgXXZ1aR3L1iDIjvEYGRfWX86iqU14w",
+      secretKey: "TSNUtEGcL50mGAuVtO9C9FBijB3R3djy6pX2_Dzz",
+      bucket: "test",
       private: false
     },{
       dir:optionDir,

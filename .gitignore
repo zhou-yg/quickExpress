@@ -92,3 +92,6 @@ node_modules/
 
 
 node_modules/yargs/node_modules/wordwrap/package.json
+
+.gulp/
+public/compress
