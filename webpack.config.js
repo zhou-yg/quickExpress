@@ -39,8 +39,8 @@ module.exports = {
     index: path.resolve(__dirname, './public/js/main.js'),
   },
   output: {
-    path: path.resolve(__dirname, './public/js/dist/'),
-    publicPath: "http://localhost:" + webpackDevPort + "/public/js/dist",
+    path: path.resolve(__dirname, './public/dist/'),
+    publicPath: "http://localhost:" + webpackDevPort + "/public/dist",
     filename: '[name].js'
   },
   module: {
