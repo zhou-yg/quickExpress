@@ -29,6 +29,12 @@ var dbReady = function(cb) {
 };
 
 module.exports = {
+
+    /**
+     * collection名，生成db ready回调函数的回调
+     * @param collectionName
+     * @returns {Function}
+     */
     db:function(collectionName){
         return function (cb) {
             dbReady(function (db) {
