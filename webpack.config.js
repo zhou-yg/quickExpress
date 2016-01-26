@@ -5,27 +5,15 @@ var webpack = require('webpack');
 
 var webpackDevPort = 7301;
 
-var NodeENV = process.env.NODE_ENV;
-
 var plugins = [];
 
 var definePlugin = new webpack.DefinePlugin({
   env:{
-    isDevelopment:process.env.NODE_ENV !== 'product'
-  }
-});
-
-var uglify = new webpack.optimize.UglifyJsPlugin({
-  compress:{
-    warning:false
+    isDevelopment:true
   }
 });
 
 plugins.push(definePlugin);
-
-if(NodeENV === 'product'){
-  plugins.push(uglify);
-}
 
 module.exports = {
   webpackDevPort: webpackDevPort,
@@ -36,7 +24,9 @@ module.exports = {
 
   },
   entry: {
-    index: path.resolve(__dirname, './public/js/main.js'),
+    index: [
+      path.resolve(__dirname, './public/js/main.js'),
+    ]
   },
   output: {
     path: path.resolve(__dirname, './public/dist/'),
@@ -59,10 +49,21 @@ module.exports = {
         test:/\.scss$/,
         exclude: /node_modules|bower_components/,
         loaders:['style','css','sass-loader']
+      },
+      {
+        test:/\.jpg|png$/,
+        exclude: /node_modules|bower_components/,
+        loaders:['url','file']
+      },
+      {
+        test:/\.ttf|otf|eot|svg$/,
+        exclude: /node_modules|bower_components/,
+        loaders:['url','file']
       }
     ]
   },
   plugins:plugins,
+
   devtool: 'source-map'
 };
 
