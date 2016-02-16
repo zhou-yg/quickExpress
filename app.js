@@ -14,9 +14,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-if(process.env.NODE_ENV===development){
+if(process.env.NODE_ENV !== 'product'){
   var webpack = require('webpack');
-  var config = require('./webpack.config.dev');
+  var config = require('./webpack.config');
   var compiler = webpack(config);
 
   var webpackDevMiddleware = require('webpack-dev-middleware');

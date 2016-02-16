@@ -5,16 +5,6 @@ var webpack = require('webpack');
 
 var webpackDevPort = 7301;
 
-var plugins = [];
-
-var definePlugin = new webpack.DefinePlugin({
-  env:{
-    isDevelopment:true
-  }
-});
-
-plugins.push(definePlugin);
-
 module.exports = {
   webpackDevPort: webpackDevPort,
   resolve: {
@@ -26,11 +16,12 @@ module.exports = {
   entry: {
     index: [
       path.resolve(__dirname, './public/js/main.js'),
+      'webpack-hot-middleware/client',
     ]
   },
   output: {
     path: path.resolve(__dirname, './public/dist/'),
-    publicPath: "http://localhost:" + webpackDevPort + "/public/dist",
+    publicPath: "/dist",
     filename: '[name].js'
   },
   module: {
@@ -62,7 +53,14 @@ module.exports = {
       }
     ]
   },
-  plugins:plugins,
+  plugins:[
+    new webpack.DefinePlugin({
+      env:{
+        isDevelopment:true
+      }
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
 
   devtool: 'source-map'
 };
