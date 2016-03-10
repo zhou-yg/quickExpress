@@ -15,17 +15,28 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 if(process.env.NODE_ENV !== 'product'){
+<<<<<<< HEAD
   var webpackDevMiddleware = require('webpack-dev-middleware');
   var webpackHotMiddleware = require('webpack-hot-middleware');
+=======
+>>>>>>> origin/master
   var webpack = require('webpack');
   var config = require('./webpack.config');
   var compiler = webpack(config);
 
+<<<<<<< HEAD
   app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
   }));
   app.use(webpackHotMiddleware(compiler));
+=======
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  var webpackHotMiddleware = require('webpack-hot-middleware');
+
+  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+  app.use(webpackHotMiddleware(compiler))
+>>>>>>> origin/master
 }
 
 // uncomment after placing your favicon in /public
