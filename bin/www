@@ -100,10 +100,9 @@ function onListening() {
 
 function runGulp(){
   var env = app.get('env');
+
   if( env === 'development'){
-    gulpfile.start('development');
   }
   if( env === 'product'){
-    gulpfile.start('product');
   }
 }
